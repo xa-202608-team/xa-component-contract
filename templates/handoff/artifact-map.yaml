@@ -1,0 +1,36 @@
+# 工件映射模板：命令 -> 产物 -> 槽位/层级（复制到组件仓库后逐项填写）
+component: <battery|phased-array|wheel>
+release_candidate: <component>-vX.Y.Z-rc.N
+contract_version: component-contract-v1.1.0
+commands:
+  verify:
+    produces: [pytest 报告, schema 校验结果]
+    layer: 代码 CI
+    notes: 不产出对外工件
+  reproduce_judge:
+    produces: [metrics.json, manifest.json, run.log]
+    layer: 代码 CI
+    output_dir: --output 指定目录
+  reproduce_full:
+    produces: [metrics.json, manifest.json, run.log, figures/, REPRODUCE_OK]
+    layer: 正式 RC 工件
+    output_dir: --output 指定目录
+  component.predict:
+    produces: [prediction.json]
+    layer: 代码 CI
+    notes: 输出符合 schemas/prediction.schema.json
+slots:
+  data:
+    allowed: [data/README.md, data/data_manifest.json]
+    manifest: data/data_manifest.json
+    contents: 外部/仿真数据的登记清单，大文件本体不入库
+  results:
+    allowed: [results/README.md, results/public_summary.json, results/expected_metrics.json]
+    contents: 公开摘要与期望指标；完整结果走 --output 目录交接
+  checkpoints:
+    allowed: [checkpoints/README.md, checkpoints/checkpoint_manifest.json]
+    contents: 权重登记清单，权重本体不入库
+  reference:
+    policy: 整目录忽略（/reference/**），只读参照物，禁止写入
+  release:
+    policy: 整目录忽略（/release/**），发布产物经下载/生成脚本重建

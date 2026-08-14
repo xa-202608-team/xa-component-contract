@@ -24,3 +24,9 @@ jobs:
       - run: python tools/validate_contract.py --schema schemas/manifest.schema.json --input examples/manifest.example.json
       - run: python tools/validate_contract.py --schema schemas/metrics.schema.json --input examples/metrics.example.json
       - run: python tools/validate_contract.py --schema schemas/expected_metrics.schema.json --input examples/expected_metrics.example.json
+      - run: python tools/validate_contract.py --schema schemas/prediction.schema.json --input examples/prediction.example.json
+      - run: python tools/validate_contract.py --schema schemas/handoff-manifest.schema.json --input examples/handoff_manifest.example.json
+      - run: python tools/validate_contract.py --schema schemas/dataset-metadata.schema.json --input examples/dataset.example.yaml
+      - run: python tools/validate_timeseries.py --telemetry examples/telemetry_long.example.csv --metadata examples/dataset.example.yaml
+      - run: python tools/convert_wide_to_long.py --input examples/telemetry_wide.example.csv --output /tmp/telemetry_long.generated.csv --units-json '{"motor_current":"A","wheel_speed":"rpm"}'
+      - run: python tools/repository_policy.py --root .

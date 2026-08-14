@@ -1,0 +1,4 @@
+timestamp,component_id,component_type,condition_id,motor_current,wheel_speed
+2026-01-01T00:00:00Z,wheel-001,wheel,nominal,0.8,3200.0
+2026-01-01T00:01:00Z,wheel-001,wheel,nominal,0.81,3200.0
+2026-01-01T00:02:00Z,wheel-001,wheel,nominal,0.83,3200.0
