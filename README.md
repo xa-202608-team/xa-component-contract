@@ -2,6 +2,10 @@
 
 XA-202608 多仓库协作的公共契约仓库：定义组件复现清单与指标的 JSON Schema、校验器、治理模板与契约校验 CI（`contract-validation`）。
 
+## 当前版本
+
+**component-contract-v1.0.0** — 首个正式版本，Release 见：<https://github.com/xa-202608-team/xa-component-contract/releases/tag/component-contract-v1.0.0>
+
 ## 文档导航
 
 - [COMPONENT_CONTRACT.md](COMPONENT_CONTRACT.md) — 组件公共契约正文（目录 / 命令 / 退出码 / 输出物 / 写入边界 / 数据治理 / 结论分类）
