@@ -43,3 +43,11 @@ def test_metrics_allows_negative_transfer_conclusion(tmp_path: Path) -> None:
     candidate = tmp_path / "metrics.json"
     candidate.write_text(json.dumps(payload), encoding="utf-8")
     assert validate_document(candidate, ROOT / "schemas" / "metrics.schema.json") == []
+
+
+def test_manifest_accepts_v11_contract_version(tmp_path: Path) -> None:
+    payload = json.loads((ROOT / "examples" / "manifest.example.json").read_text("utf-8"))
+    payload["contract_version"] = "component-contract-v1.1.0"
+    candidate = tmp_path / "manifest.json"
+    candidate.write_text(json.dumps(payload), encoding="utf-8")
+    assert validate_document(candidate, ROOT / "schemas" / "manifest.schema.json") == []

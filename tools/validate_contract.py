@@ -3,15 +3,28 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from typing import Any
 
+import yaml
 from jsonschema import Draft202012Validator
 
 
+def load_document(path: Path) -> Any:
+    text = path.read_text(encoding="utf-8")
+    if path.suffix.lower() in {".yaml", ".yml"}:
+        return yaml.safe_load(text)
+    if path.suffix.lower() == ".json":
+        return json.loads(text)
+    raise ValueError(f"unsupported document type: {path.suffix}")
+
+
 def validate_document(document_path: Path, schema_path: Path) -> list[str]:
-    document = json.loads(document_path.read_text(encoding="utf-8"))
-    schema = json.loads(schema_path.read_text(encoding="utf-8"))
-    validator = Draft202012Validator(schema)
-    errors = sorted(validator.iter_errors(document), key=lambda error: list(error.path))
+    document = load_document(document_path)
+    schema = load_document(schema_path)
+    errors = sorted(
+        Draft202012Validator(schema).iter_errors(document),
+        key=lambda error: list(error.path),
+    )
     return [f"{'.'.join(map(str, error.path)) or '<root>'}: {error.message}" for error in errors]
 
 

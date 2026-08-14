@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.1.0",
+  "contract_version": "component-contract-v1.1.0",
+  "component": "battery",
+  "git_commit": "0123456789abcdef0123456789abcdef01234567",
+  "telemetry_name": "voltage",
+  "generated_at": "2026-08-14T08:00:00Z",
+  "forecasts": [
+    {
+      "component_id": "battery-001",
+      "origin_timestamp": "2026-01-01T00:00:00Z",
+      "horizon_step": 1,
+      "predicted_timestamp": "2026-01-01T00:01:00Z",
+      "predicted_value": 28.2,
+      "unit": "V",
+      "rul": 719,
+      "rul_unit": "minutes",
+      "uncertainty_lower": 27.9,
+      "uncertainty_upper": 28.5
+    },
+    {
+      "component_id": "battery-001",
+      "origin_timestamp": "2026-01-01T00:00:00Z",
+      "horizon_step": 2,
+      "predicted_timestamp": "2026-01-01T00:02:00Z",
+      "predicted_value": 28.1,
+      "unit": "V",
+      "rul": 718,
+      "rul_unit": "minutes",
+      "uncertainty_lower": 27.8,
+      "uncertainty_upper": 28.4
+    },
+    {
+      "component_id": "battery-001",
+      "origin_timestamp": "2026-01-01T00:00:00Z",
+      "horizon_step": 3,
+      "predicted_timestamp": "2026-01-01T00:03:00Z",
+      "predicted_value": 28.0,
+      "unit": "V",
+      "rul": 717,
+      "rul_unit": "minutes",
+      "uncertainty_lower": 27.7,
+      "uncertainty_upper": 28.3
+    }
+  ],
+  "status": "PREDICTION_OK"
+}

@@ -1,0 +1,3 @@
+timestamp,component_id,component_type,condition_id,telemetry_name,value,unit
+2026-01-01T00:00:00Z,battery-001,battery,nominal,voltage,28.4,V
+2026-01-01T00:01:00Z,battery-001,battery,nominal,voltage,28.3,V
