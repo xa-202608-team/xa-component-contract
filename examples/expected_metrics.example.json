@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "component": "battery",
+  "metrics": {
+    "rul_mae_days": {
+      "minimum": 193.1,
+      "maximum": 203.1,
+      "absolute_tolerance": 5.0
+    }
+  },
+  "allowed_conclusions": [
+    "POSITIVE_TRANSFER_SUPPORTED"
+  ]
+}

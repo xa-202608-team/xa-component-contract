@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0.0",
+  "component": "battery",
+  "run_id": "battery-full-20260814-0001",
+  "mode": "full",
+  "metrics": {
+    "rul_mae_days": 198.1
+  },
+  "conclusion": "POSITIVE_TRANSFER_SUPPORTED"
+}
