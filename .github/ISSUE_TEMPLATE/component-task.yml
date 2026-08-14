@@ -1,0 +1,68 @@
+name: 组件协作任务
+description: 面向三个组件仓库（battery / phased-array / wheel）的协作任务 Issue
+labels: ["component-task"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: 目标
+      description: 本任务要达成的可验收结果
+      placeholder: 例如：为 wheel 组件实现 HI 动力学层迁移并通过 quick 复现
+    validations:
+      required: true
+  - type: textarea
+    id: allowed-dirs
+    attributes:
+      label: 允许目录
+      description: 本任务允许修改的目录/文件范围
+      placeholder: 例如：src/transfer/、tests/、configs/wheel.yaml
+    validations:
+      required: true
+  - type: textarea
+    id: forbidden-scope
+    attributes:
+      label: 禁止范围
+      description: 本任务明确禁止触碰的目录/文件/行为
+      placeholder: 例如：不得修改 reference/ 目录；不得改动 schemas/
+    validations:
+      required: true
+  - type: textarea
+    id: input-versions
+    attributes:
+      label: 输入版本
+      description: 依赖的数据集版本/SHA256、配置版本、契约版本
+      placeholder: 例如：nasa-battery-dataset 5.0.0 (sha256=...)；component-contract-v1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-commands
+    attributes:
+      label: 验收命令
+      description: 验收时必须执行并通过的命令及期望退出码
+      placeholder: 例如：verify -> 0；reproduce --mode quick --output /outputs -> 0
+    validations:
+      required: true
+  - type: textarea
+    id: expected-artifacts
+    attributes:
+      label: 预期产物
+      description: 任务完成后必须存在的输出物
+      placeholder: 例如：manifest.json、metrics.json、run.log、figures/、REPRODUCE_OK
+    validations:
+      required: true
+  - type: textarea
+    id: metrics-criteria
+    attributes:
+      label: 指标判定
+      description: 判定任务成功的指标阈值与结论分类（正迁移 / 不可分 / 无正迁移 / 基线降级）
+      placeholder: 例如：迁移 RMSE 相对基线 Δ≥阈值判"正迁移"；其余按契约 §7 分类
+    validations:
+      required: true
+  - type: textarea
+    id: rollback
+    attributes:
+      label: 回退方式
+      description: 失败时如何回退
+      placeholder: 例如：revert 本 PR 的 merge commit，数据无需回滚
+    validations:
+      required: true
