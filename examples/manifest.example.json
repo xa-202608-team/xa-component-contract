@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "component": "battery",
+  "version": "battery-v0.1.0",
+  "git_commit": "0123456789abcdef0123456789abcdef01234567",
+  "contract_version": "component-contract-v1.0.0",
+  "config_sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "data": [
+    {
+      "name": "nasa-battery-dataset",
+      "version": "5.0.0",
+      "sha256": "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+      "redistributable": true
+    }
+  ],
+  "random_seeds": [42],
+  "environment": {
+    "python": "3.12.7",
+    "pytorch": "2.5.1",
+    "os": "Windows-10-10.0.19045-SP0",
+    "device": "cuda:0"
+  },
+  "elapsed_seconds": 1234.5,
+  "status": "REPRODUCE_OK"
+}
