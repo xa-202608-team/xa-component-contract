@@ -1,8 +1,31 @@
+# 数据/结果/权重槽位：白名单式忽略，仅允许 README 与清单占位文件入库
+/data/**
+!/data/README.md
+!/data/data_manifest.json
+/results/**
+!/results/README.md
+!/results/public_summary.json
+!/results/expected_metrics.json
+/checkpoints/**
+!/checkpoints/README.md
+!/checkpoints/checkpoint_manifest.json
+
+# 参照物与发布产物不入库（经 manifest + 下载/生成脚本 + SHA256 治理）
+/reference/data/**
+/reference/models/**
+/reference/results/**
+/release/data/**
+/release/checkpoints/**
+/release/results/**
+
 # Python 运行产物
 __pycache__/
 *.py[cod]
 .pytest_cache/
 .venv/
+
+# 本地私有内容
+.private/
 
 # 实验输出（只能写入 --output 指定目录，不入库）
 outputs/
@@ -10,14 +33,11 @@ runs/
 wandb/
 
 # 模型权重与大文件
-*.ckpt
+*.log
 *.pt
 *.pth
-*.log
+*.ckpt
 
 # 环境与密钥
 .env
 .env.*
-
-# 大型或不可再分发数据不入库（经 manifest + 下载/生成脚本 + SHA256 治理）
-# 允许进入 Git 的小型 fixture 必须放在 tests/fixtures/，不得用宽泛的 data/ 例外绕过治理

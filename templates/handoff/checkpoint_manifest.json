@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.1.0",
+  "contract_version": "component-contract-v1.1.0",
+  "component": "<battery|phased_array|wheel>",
+  "description": "checkpoints/ 槽位权重清单模板：登记权重校验和与重建命令，权重本体不入库。",
+  "entries": [
+    {
+      "name": "<checkpoint-name>",
+      "file": "release/<component>/model.ckpt",
+      "release_candidate": "<component>-vX.Y.Z-rc.N",
+      "git_commit": "<40-hex-commit>",
+      "sha256": "<64-hex-sha256>",
+      "config": "configs/<component>.yaml",
+      "config_sha256": "<64-hex-sha256>",
+      "rebuild_command": "scripts/run_reproduce.py reproduce_full --output <output-dir>",
+      "notes": "经 reproduce_full 可确定性重建；禁止直接提交权重文件"
+    }
+  ]
+}

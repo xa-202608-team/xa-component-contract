@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.1.0",
+  "contract_version": "component-contract-v1.1.0",
+  "component": "<battery|phased_array|wheel>",
+  "description": "data/ 槽位数据清单模板：登记数据来源与校验和，数据本体不入库。",
+  "entries": [
+    {
+      "name": "<dataset-name>",
+      "version": "<dataset-version>",
+      "file": "reference/<dataset-file>",
+      "sha256": "<64-hex-sha256>",
+      "redistributable": false,
+      "source_url": "https://<external-source>",
+      "license": "<license>",
+      "processing_script": "scripts/data/<download-or-build-script>",
+      "processing_provenance": "<配置、脚本与随机种子；本地仿真生成时 source_url 为 null 必填此项>"
+    }
+  ]
+}

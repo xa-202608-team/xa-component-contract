@@ -13,7 +13,7 @@
     "component": {"enum": ["battery", "phased_array", "wheel"]},
     "version": {"type": "string", "pattern": "^(battery|phased-array|wheel)-v[0-9]+\\.[0-9]+\\.[0-9]+(-rc\\.[0-9]+)?$"},
     "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
-    "contract_version": {"const": "component-contract-v1.0.0"},
+    "contract_version": {"enum": ["component-contract-v1.0.0", "component-contract-v1.1.0"]},
     "config_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "data": {
       "type": "array",

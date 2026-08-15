@@ -1,0 +1,48 @@
+schema_version: "1.1.0"
+contract_version: component-contract-v1.1.0
+dataset_id: battery-telemetry-example-v1
+component_type: battery
+time:
+  column: timestamp
+  format: "ISO 8601 / RFC 3339，UTC，Z 后缀"
+  timezone: UTC
+telemetry:
+  - name: voltage
+    unit: V
+    sampling_frequency: 1/min
+    source: battery-simulation
+    prediction_time_available: true
+    derived: false
+    degradation_relation: decreasing
+missing_values:
+  policy: drop
+  detail: 任一字段缺失的遥测行整行剔除，不做插值；标签行缺失同样剔除，不使用前向填充。
+split:
+  policy: by_component_id
+  assignment:
+    train: [battery-001]
+    validation: [battery-002]
+    test: [battery-003]
+    inference: [battery-004]
+labels:
+  derivation: degradation_state 由相对初始容量（2.0 Ah）的衰减比例派生（衰减 2% 记 0.02）；rul 以分钟粒度自当前时刻线性递减至失效阈值时刻；event_observed 恒为 1（仿真个体均观测到失效，无删失）；rul_lower_bound 等于 rul。
+  file: labels.example.csv
+sources:
+  - name: nasa-battery-dataset
+    version: 5.0.0
+    url: https://data.nasa.gov
+    license: US Government Work (public domain)
+    sha256: fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210
+    processing_script: scripts/data/download_nasa_battery.py
+  - name: battery-simulation
+    version: 1.0.0
+    url: null
+    license: internal
+    sha256: b8d9fafdb27d68a2d41ef9a01d9e96f7e310e59aa87b2afbccfc629c10b2a4e3
+    processing_script: scripts/data/build_battery_telemetry.py
+prediction:
+  primary_telemetry: voltage
+  degradation_direction: decreasing
+  failure_threshold: 24.0
+  forecast_horizon: 60
+  rul_unit: minutes
